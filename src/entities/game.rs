@@ -7,9 +7,7 @@ use sea_orm::entity::prelude::*;
 pub struct Model {
     #[sea_orm(primary_key)]
     pub id: i32,
-    #[sea_orm(primary_key, auto_increment = false)]
     pub home_team_id: i32,
-    #[sea_orm(primary_key, auto_increment = false)]
     pub away_team_id: i32,
 }
 
