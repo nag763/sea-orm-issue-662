@@ -1,0 +1,25 @@
+usr@zorin-os:~/workspace/sea-orm-issue$ bash -c "RUST_LOG=DEBUG cargo r > log.txt"
+   Compiling sea-orm-issue-several-join v0.1.0 (/home/usr/workspace/sea-orm-issue-several-join)
+    Finished dev [unoptimized + debuginfo] target(s) in 3.05s
+     Running `target/debug/sea-orm-issue-several-join`
+[2022-04-04T17:14:33Z INFO  sqlx::query] SET sql_mode=(SELECT CONCAT(@@sql_mode, ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION')),time_zone='+00:00',NAMES …; rows: 0, elapsed: 676.245µs
+    
+    SET
+      sql_mode =(
+        SELECT
+          CONCAT(
+            @ @sql_mode,
+            ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION'
+          )
+      ),
+      time_zone = '+00:00',
+      NAMES utf8mb4 COLLATE utf8mb4_unicode_ci;
+    
+[2022-04-04T17:14:33Z INFO  sqlx::query] INSERT INTO `GAME` (`home_team_id`, …; rows: 0, elapsed: 5.495ms
+    
+    INSERT INTO
+      `GAME` (`home_team_id`, `away_team_id`)
+    VALUES
+      (?, ?)
+    
+Error: Exec("Fail to unpack last_insert_id")
